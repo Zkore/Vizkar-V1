@@ -19,8 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity_main"/>
-        <activity android:name=".ActivityLoginScreen" />
+        <activity android:name=".activityMain"/>
+        <activity android:name=".activityLoginScreen" />
         <activity android:name=".activitySignUpScreen" />
     </application>
 
