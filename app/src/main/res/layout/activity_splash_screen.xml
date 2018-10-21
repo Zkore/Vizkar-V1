@@ -8,10 +8,18 @@
     android:orientation="vertical"
     tools:context=".ActivitySplashScreen">
 
-    <TextView
+
+    <!-- Change this into res  minHeigh y min Width-->
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hola soy SplashScreen"/>
+        android:layout_above="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:minWidth="200dp"
+        android:minHeight="200dp"
+        android:id="@+id/Image_logo"
+        />
 
     <!-- Change this into res  minHeigh y min Width-->
     <ProgressBar

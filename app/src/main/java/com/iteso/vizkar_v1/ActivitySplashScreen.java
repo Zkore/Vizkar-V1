@@ -5,8 +5,11 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -16,6 +19,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
     ProgressBar bar;
     TextView textViewBarPercentage;
     Integer progBarPercentage = 0;
+    ImageView gifLogo;
     private Handler handler = new Handler();
 
 
@@ -26,28 +30,30 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
         bar = findViewById(R.id.progressBar);
         textViewBarPercentage = findViewById(R.id.TextView_bar);
+        gifLogo = findViewById(R.id.Image_logo);
 
 
-                new Thread(new Runnable() {
-                    public void run() {
-                        while (progBarPercentage < 100) {
-                            progBarPercentage += 10;
-                            handler.post(new Runnable() {
-                                public void run() {
-                                    bar.setProgress(progBarPercentage);
-                                    textViewBarPercentage.setText(progBarPercentage+"/"+bar.getMax());
-                                }
-                            });
-                            try {
-                                // Sleep for 200 milliseconds.
-                                Thread.sleep(200);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+        new Thread(new Runnable() {
+            public void run() {
+                while (progBarPercentage < 100) {
+                    progBarPercentage += 10;
+                    handler.post(new Runnable() {
+                        public void run() {
+                            bar.setProgress(progBarPercentage);
+                            textViewBarPercentage.setText(progBarPercentage+"/"+bar.getMax());
                         }
+                    });
+                    try {
+                        // Sleep for 200 milliseconds.
+                        Thread.sleep(200);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-                }).start();
+                }
+            }
+        }).start();
 
+        Glide.with(this).load("https://thumbs.gfycat.com/SeveralInfantileAfricanfisheagle-size_restricted.gif").into(gifLogo);
     }
 
     /*
