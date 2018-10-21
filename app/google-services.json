@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "415423395842",
+    "firebase_url": "https://vizkar-v1.firebaseio.com",
+    "project_id": "vizkar-v1",
+    "storage_bucket": "vizkar-v1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415423395842:android:cccd93af2318a39d",
+        "android_client_info": {
+          "package_name": "com.iteso.vizkar_v1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415423395842-trsm6chif3c4ovl2u076l55sqk79k7ms.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iteso.vizkar_v1",
+            "certificate_hash": "36fdd28117b884a25759b4c83dcc04d3eb83e083"
+          }
+        },
+        {
+          "client_id": "415423395842-rfjkja68r19cki758uscnvbrj94cmijg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIrSb-lKhPWoGejOv0aP_ssxfk7tAG4UI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415423395842-rfjkja68r19cki758uscnvbrj94cmijg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
