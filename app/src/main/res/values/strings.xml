@@ -3,5 +3,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="Login">Iniciar Sesion</string>
+    <string name="login">Iniciar Sesion</string>
+    <string name="loginGoogle">Iniciar Con Google</string>
+    <string name="recoverPass">Recuperar Contraseña</string>
+    <string name="rememberMe">Recuerdame</string>
+    <string name="newUser">¿Nuevo?</string>
 </resources>

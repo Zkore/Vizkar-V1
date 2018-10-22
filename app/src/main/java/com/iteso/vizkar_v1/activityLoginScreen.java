@@ -2,6 +2,7 @@ package com.iteso.vizkar_v1;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 public class activityLoginScreen extends AppCompatActivity {
 
