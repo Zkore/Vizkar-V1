@@ -1,5 +1,6 @@
 package com.iteso.vizkar_v1;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
@@ -32,11 +33,12 @@ public class ActivitySplashScreen extends AppCompatActivity {
         textViewBarPercentage = findViewById(R.id.TextView_bar);
         gifLogo = findViewById(R.id.Image_logo);
 
+        Glide.with(this).load("https://thumbs.gfycat.com/SeveralInfantileAfricanfisheagle-size_restricted.gif").into(gifLogo);
 
         new Thread(new Runnable() {
             public void run() {
                 while (progBarPercentage < 100) {
-                    progBarPercentage += 10;
+                    progBarPercentage += 5;
                     handler.post(new Runnable() {
                         public void run() {
                             bar.setProgress(progBarPercentage);
@@ -44,17 +46,26 @@ public class ActivitySplashScreen extends AppCompatActivity {
                         }
                     });
                     try {
-                        // Sleep for 200 milliseconds.
                         Thread.sleep(200);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                    }
+                    if (progBarPercentage >= 99){
+                        Intent intent = new Intent(ActivitySplashScreen.this, activityLoginScreen.class);
+                        startActivity(intent);
+                        finish();
+
                     }
                 }
             }
         }).start();
 
-        Glide.with(this).load("https://thumbs.gfycat.com/SeveralInfantileAfricanfisheagle-size_restricted.gif").into(gifLogo);
+
+
+
     }
+
+
 
     /*
     public User loadPreferences(){
