@@ -33,7 +33,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
         textViewBarPercentage = findViewById(R.id.TextView_bar);
         gifLogo = findViewById(R.id.Image_logo);
 
-        Glide.with(this).load("https://thumbs.gfycat.com/SeveralInfantileAfricanfisheagle-size_restricted.gif").into(gifLogo);
+        Glide.with(this).load("https://thumbs.gfycat.com/DearDescriptiveBlacklemur-small.gif").into(gifLogo);
 
         new Thread(new Runnable() {
             public void run() {
@@ -46,7 +46,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
                         }
                     });
                     try {
-                        Thread.sleep(200);
+                        Thread.sleep(300);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -59,8 +59,6 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 }
             }
         }).start();
-
-
 
 
     }
