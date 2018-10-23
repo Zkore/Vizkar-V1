@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Splash screen -->
-    <dimen name="minWidthHeightSplashScreen">200dp</dimen>
+    <dimen name="minWidthHeightSplashScreen">300dp</dimen>
     <dimen name="minHeightProgressBar">50dp</dimen>
 
     <!-- Fragment Screen Profile -->

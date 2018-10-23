@@ -124,7 +124,6 @@ public class activityMain extends AppCompatActivity {
 
     private void logOutopt(){
         Intent intent = new Intent( this, activityLoginScreen.class);
-        //TODO
         PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().clear().apply();
         this.startActivity(intent);
     }

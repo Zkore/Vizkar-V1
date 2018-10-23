@@ -23,6 +23,7 @@
     <string name="CityTag_hint">Enter your city</string>
     <string name="AgeTag_hint">Enter your age</string>
     <string name="MailTag_hint">Enter your mail</string>
+    <string name="LogOut">LogOut</string>
 
 
 
