@@ -10,19 +10,16 @@
     tools:context=".ActivitySplashScreen">
 
 
-    <!-- Change this into res  minHeigh y min Width-->
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:minWidth="200dp"
-        android:minHeight="200dp"
+        android:minWidth="@dimen/minWidthHeightSplashScreen"
+        android:minHeight="@dimen/minWidthHeightSplashScreen"
         android:id="@+id/Image_logo"
         />
 
-    <!-- Change this into res  minHeigh y min Width-->
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -30,8 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/Image_logo"
-        android:minHeight="50dp"
-        android:minWidth="200dp"
+        android:minHeight="@dimen/minHeightProgressBar"
+        android:minWidth="@dimen/minWidthHeightSplashScreen"
         android:progress="0"
         android:layout_weight="1" />
 

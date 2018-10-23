@@ -92,15 +92,14 @@ public class activityMain extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case Constant.FRAGMENT_EVENTOSPROXIMOS:
-                    //TODO poner strings en values
-                    //return getString(R.string.section1);
-                    return "Eventos Proximos";
+                    return getString(R.string.section1);
+                    //return "Eventos Proximos";
                 case Constant.FRAGMENT_MISEVENTOS:
-                    //return getString(R.string.section2);
-                return "Eventos Proximos";
+                    return getString(R.string.section2);
+                //return "Eventos Proximos";
                 case Constant.FRAGMENT_PERFIL:
-                    //return getString(R.string.section3);
-                return "Perfil";
+                    return getString(R.string.section3);
+                //return "Perfil";
             }
             return null;
         }

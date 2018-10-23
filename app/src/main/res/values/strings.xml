@@ -8,4 +8,12 @@
     <string name="recoverPass">Recuperar Contraseña</string>
     <string name="rememberMe">Recuerdame</string>
     <string name="newUser">¿Nuevo?</string>
+
+    <!-- Activity Main -->
+    <string name="section1">Eventos Proximos</string>
+    <string name="section2">Mis Eventos</string>
+    <string name="section3">Perfil</string>
+
+
+
 </resources>
