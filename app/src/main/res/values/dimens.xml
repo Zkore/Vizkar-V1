@@ -4,4 +4,11 @@
     <dimen name="minWidthHeightSplashScreen">200dp</dimen>
     <dimen name="minHeightProgressBar">50dp</dimen>
 
+    <!-- Fragment Screen Profile -->
+    <dimen name="TextSize">25dp</dimen>
+    <dimen name="EditTextWidthFragment">300dp</dimen>
+    <dimen name="EditTextWidthCityFragment">200dp</dimen>
+    <dimen name="ProfileWidthHeight">200dp</dimen>
+    <dimen name="ProfileWidthBtnLocal">50dp</dimen>
+
 </resources>

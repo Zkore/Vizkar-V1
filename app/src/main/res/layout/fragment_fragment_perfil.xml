@@ -1,14 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainPurple"
     tools:context=".beans.FragmentPerfil">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:layout_width="@dimen/ProfileWidthHeight"
+        android:layout_height="@dimen/ProfileWidthHeight"
+        android:id="@+id/Photo_Perfil_Fragment_Perfil"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/penguin_icono"
+        />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/NameTag"
+        android:textSize="@dimen/TextSize"
+        android:id="@+id/TextView_Name"
+        android:textColor="@color/mainWhite"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/Photo_Perfil_Fragment_Perfil"
+        />
+
+    <EditText
+        android:layout_width="@dimen/EditTextWidthFragment"
+        android:layout_height="wrap_content"
+        android:id="@+id/EditTextName"
+        android:hint="@string/NameTag_hint"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/TextView_Name"
+        android:inputType="textPersonName"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/CityTag"
+        android:textSize="@dimen/TextSize"
+        android:id="@+id/TextView_City"
+        android:textColor="@color/mainWhite"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/EditTextName"
+        />
+
+    <EditText
+        android:layout_width="@dimen/EditTextWidthCityFragment"
+        android:layout_height="wrap_content"
+        android:id="@+id/EditTextCity"
+        android:hint="@string/CityTag_hint"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/TextView_City"
+        android:inputType="textPersonName"/>
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/TextView_City"
+        android:id="@+id/locationBtn"
+        android:layout_toStartOf="@+id/Photo_Perfil_Fragment_Perfil" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AgeTag"
+        android:textSize="@dimen/TextSize"
+        android:id="@+id/TextView_Age"
+        android:textColor="@color/mainWhite"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/EditTextCity"
+        />
+
+    <EditText
+        android:layout_width="@dimen/EditTextWidthFragment"
+        android:layout_height="wrap_content"
+        android:id="@+id/EditTextAge"
+        android:hint="@string/AgeTag_hint"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/TextView_Age"
+        android:inputType="textPersonName"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/MailTag"
+        android:textSize="@dimen/TextSize"
+        android:id="@+id/TextView_Mail"
+        android:textColor="@color/mainWhite"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/EditTextAge"
+        />
+
+    <EditText
+        android:id="@+id/EditTextMail"
+        android:layout_width="@dimen/EditTextWidthFragment"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TextView_Mail"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/MailTag_hint"
+        android:inputType="textPersonName" />
+
+
+
+</RelativeLayout>

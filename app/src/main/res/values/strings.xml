@@ -10,9 +10,19 @@
     <string name="newUser">¿Nuevo?</string>
 
     <!-- Activity Main -->
-    <string name="section1">Eventos Proximos</string>
-    <string name="section2">Mis Eventos</string>
-    <string name="section3">Perfil</string>
+    <string name="section1">UpComing Events</string>
+    <string name="section2">My Events</string>
+    <string name="section3">Profile</string>
+
+    <!-- Fragment Perfil -->
+    <string name="NameTag">Name</string>
+    <string name="CityTag">City</string>
+    <string name="AgeTag">Age</string>
+    <string name="MailTag">E-mail @</string>
+    <string name="NameTag_hint">Enter your name</string>
+    <string name="CityTag_hint">Enter your city</string>
+    <string name="AgeTag_hint">Enter your age</string>
+    <string name="MailTag_hint">Enter your mail</string>
 
 
 

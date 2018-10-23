@@ -5,6 +5,11 @@
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- Network location : -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- GPS location -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
 
     <application
         android:allowBackup="true"
