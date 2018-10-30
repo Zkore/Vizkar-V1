@@ -4,30 +4,37 @@
 
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- Network location : -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- GPS location -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/penguin_icono"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/penguin_icono"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivitySplashScreen">
+        <activity android:name=".ActivitySplashScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activityMain"/>
-        <activity android:name=".activityLoginScreen" />
-        <activity android:name=".activitySignUpScreen" />
+        <activity android:name=".activityMain"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activityLoginScreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activitySignUpScreen"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ActivityInicial"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_inicial"></activity>
     </application>
 
 </manifest>

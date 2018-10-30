@@ -16,11 +16,9 @@ import com.iteso.vizkar_v1.R;
  */
 public class FragmentEventosProximosDef extends Fragment {
 
-
     public FragmentEventosProximosDef() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
