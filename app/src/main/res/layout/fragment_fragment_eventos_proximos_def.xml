@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/main_background"
     android:padding="20dp"
-    tools:context=".beans.fragmentMisEventos">
+    tools:context=".beans.FragmentEventosProximosDef">
 
+    <!-- String y Dimens-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +33,6 @@
         android:layout_marginTop="108dp"
         android:minHeight="200dp"
         android:minWidth="200dp" />
-
 
 
 </RelativeLayout>

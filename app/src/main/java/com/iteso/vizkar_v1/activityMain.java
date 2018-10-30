@@ -1,6 +1,9 @@
 package com.iteso.vizkar_v1;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,6 +12,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +21,8 @@ import com.iteso.vizkar_v1.beans.FragmentEventosProximos;
 import com.iteso.vizkar_v1.beans.FragmentPerfil;
 import com.iteso.vizkar_v1.beans.fragmentMisEventos;
 import com.iteso.vizkar_v1.tools.Constant;
+
+import java.security.MessageDigest;
 
 public class activityMain extends AppCompatActivity {
     //Este activity va a tener todos los fragmentos
@@ -39,7 +45,20 @@ public class activityMain extends AppCompatActivity {
         ViewPager mViewPager = findViewById(R.id.ViewPager_Main);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabLayout.setupWithViewPager(mViewPager);
+
+        //Para obtener
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo("com.iteso.vizkar_v1", PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures){
+                MessageDigest messageDigest = MessageDigest.getInstance("SHA");
+                messageDigest.update(signature.toByteArray());
+                Log.e("Google" , Base64.encodeToString(messageDigest.digest(),Base64.DEFAULT));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
