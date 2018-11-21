@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "415423395842-cukdregps39fo5f8funpp2hfedt5o8tn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iteso.vizkar_v1",
+            "certificate_hash": "dcbefa0197c1ee225abf5561a9147fb06e1bf44f"
+          }
+        },
+        {
           "client_id": "415423395842-rfjkja68r19cki758uscnvbrj94cmijg.apps.googleusercontent.com",
           "client_type": 3
         }

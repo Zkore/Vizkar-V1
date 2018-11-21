@@ -24,6 +24,7 @@
     <string name="AgeTag_hint">Enter your age</string>
     <string name="MailTag_hint">Enter your mail</string>
     <string name="LogOut">LogOut</string>
+    <string name="title_activity_inicial">ActivityInicial</string>
 
 
 </resources>

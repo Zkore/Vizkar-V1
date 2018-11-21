@@ -44,7 +44,7 @@ public class FragmentEventosProximos extends Fragment {
             public void onClick(View view) {
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
-                //transaction.replace(R.id.ViewPager_Main, new FragmentEventosProximosDef());
+                //transaction.replace(R.id.ViewPager_Main, FragmentEventosProximosDef);
                 transaction.commit();
             }
         });
