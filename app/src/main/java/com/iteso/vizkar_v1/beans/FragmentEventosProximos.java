@@ -1,13 +1,11 @@
 package com.iteso.vizkar_v1.beans;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.transition.Slide;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +42,9 @@ public class FragmentEventosProximos extends Fragment {
             public void onClick(View view) {
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
-                //transaction.replace(R.id.ViewPager_Main, FragmentEventosProximosDef);
+                FragmentEventosProximosDespuesDeFiltro fragment = new FragmentEventosProximosDespuesDeFiltro();
+                transaction.replace(R.id.ViewPager_Main, fragment);
+                transaction.addToBackStack(null);
                 transaction.commit();
             }
         });
