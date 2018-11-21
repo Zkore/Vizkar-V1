@@ -44,7 +44,9 @@ public class FragmentEventosProximos extends Fragment {
             public void onClick(View view) {
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
-                //transaction.replace(R.id.ViewPager_Main, FragmentEventosProximosDef);
+                FragmentEventosProximosDef fragmentTime = new FragmentEventosProximosDef();
+                transaction.replace(R.layout.fragment_fragment_eventos_prox, fragmentTime);
+                transaction.addToBackStack(null);
                 transaction.commit();
             }
         });
