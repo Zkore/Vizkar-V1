@@ -3,6 +3,7 @@ package com.iteso.vizkar_v1.beans;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +24,10 @@ public class FragmentEventosProximosDespuesDeFiltro extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_fragment_eventos_proximos_def, container, false);
+
         View view = inflater.inflate(R.layout.fragment_fragment_eventos_proximos_def, container,false);
 
-        ImageView imageViewIfNothing = view.findViewById(R.id.contentImage);
-
-        //imageViewIfNothing.setVisibility(View.VISIBLE);
+        Log.e("FragmentInside","onCreate");
 
 
 

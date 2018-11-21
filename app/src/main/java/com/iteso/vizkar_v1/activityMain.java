@@ -9,6 +9,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ public class activityMain extends AppCompatActivity {
 
     private static final int TOTAL_PAGES = 3;
     private FragmentEventosProximos fragmentEventosProximos;
-    private fragmentMisEventos fragmentMisEventos;
+    private fragmentMisEventos fragmentMisEventos1;
     private FragmentPerfil fragmentPerfil;
 
 
@@ -59,7 +60,6 @@ public class activityMain extends AppCompatActivity {
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -85,16 +85,22 @@ public class activityMain extends AppCompatActivity {
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position) {
                 case Constant.FRAGMENT_EVENTOSPROXIMOS:
-                    if (fragmentEventosProximos == null)
+                    if (fragmentEventosProximos == null){
                         fragmentEventosProximos = new FragmentEventosProximos();
+                    Log.e("Fragment" , "EventosProximos");
+                    }
                     return fragmentEventosProximos;
                 case Constant.FRAGMENT_MISEVENTOS:
-                    if (fragmentMisEventos == null)
-                        fragmentMisEventos = new fragmentMisEventos();
-                    return fragmentMisEventos;
+                    if (fragmentMisEventos1 == null) {
+                        fragmentMisEventos1 = new fragmentMisEventos();
+                        Log.e("Fragment" , "MisEventos");
+                    }
+                    return fragmentMisEventos1;
                 case Constant.FRAGMENT_PERFIL:
-                    if (fragmentPerfil == null)
+                    if (fragmentPerfil == null) {
                         fragmentPerfil = new FragmentPerfil();
+                        Log.e("Fragment", "Perfil");
+                    }
                     return fragmentPerfil;
                 default:
                     return new FragmentEventosProximos();
