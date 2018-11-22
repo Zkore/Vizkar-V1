@@ -152,31 +152,5 @@ public class activityMain extends AppCompatActivity {
         PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().clear().apply();
         this.startActivity(intent);
     }
-    /*
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
-            case Constant.ACTIVITY_DETAIL:
-                if(resultCode == RESULT_OK){
-                    if(data.getExtras() != null) {
-                        int fragment = data.getExtras().getInt(Constant.EXTRA_FRAGMENT);
-                        switch (fragment) {
-                            case Constant.FRAGMENT_TECHNOLOGY:
-                                fragmentTechnology.onActivityResult(requestCode, resultCode, data);
-                                break;
-                            case Constant.FRAGMENT_HOME:
-                                fragmentHome.onActivityResult(requestCode, resultCode, data);
-                                break;
-                            case Constant.FRAGMENT_ELECTRONICS:
-                                fragmentElectronics.onActivityResult(requestCode, resultCode, data);
-                                break;
-                        }
-                    }
-                }
-                break;
-        }
-    }
-    */
 }
 
