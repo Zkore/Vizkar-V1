@@ -30,6 +30,7 @@ public class FragmentEventosProximos extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+
         //return super.onCreateView(inflater, container, savedInstanceState);
         //return inflater.inflate(R.layout.fragment_fragment_eventos_prox, container, false);
         View view = inflater.inflate(R.layout.fragment_fragment_eventos_prox, container,false);
@@ -37,6 +38,8 @@ public class FragmentEventosProximos extends Fragment {
         proximidadBtn = view.findViewById(R.id.porProximidadBtn);
         generoBtn = view.findViewById(R.id.PorGeneroBtn);
 
+        //On Hold
+        /*
         proximidadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,7 +51,7 @@ public class FragmentEventosProximos extends Fragment {
                 transaction.commit();
             }
         });
-
+        */
 
         return view;
     }
