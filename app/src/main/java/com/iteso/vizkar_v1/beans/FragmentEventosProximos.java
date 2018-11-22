@@ -15,8 +15,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.iteso.vizkar_v1.R;
+import com.iteso.vizkar_v1.tools.Constant;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 public class FragmentEventosProximos extends Fragment {
 
     private RecyclerView recyclerView;
-    ArrayList<eventos> eventos;
+    public ArrayList<eventos> eventosArrayList;
     MyAdapter adapterEvent;
 
 
@@ -56,39 +58,14 @@ public class FragmentEventosProximos extends Fragment {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
         MyAdapter myAdapter = new MyAdapter();
-        eventos = new ArrayList<>();
-        eventos.add(new eventos(1,"Coordenada","Musica","Guadalajara"));
-        eventos.add(new eventos(2,"Pal Norte", "Musica","Monterrey"));
-        eventos.add(new eventos(3,"PalSur","Musica","Guanajuato"));
+        eventosArrayList = new ArrayList<>();
+        eventosArrayList.add(new eventos(1,"Coordenada","Musica","Guadalajara","27 Junio"));
+        eventosArrayList.add(new eventos(2,"Pal Norte", "Musica","Monterrey","23 Agosto"));
+        eventosArrayList.add(new eventos(3,"PalSur","Musica","Guanajuato","4 Mayo"));
 
+        MyAdapter myAdapter1 = new MyAdapter(Constant.FRAGMENT_EVENTOSPROXIMOS, getContext(), eventosArrayList);
+        recyclerView.setAdapter(myAdapter1);
+    }
 
-        recyclerView.setAdapter(myAdapter);
-    }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 
 }
-
-
-
-
-        /*
-        proximidadBtn = view.findViewById(R.id.porProximidadBtn);
-        generoBtn = view.findViewById(R.id.PorGeneroBtn);
-
-        //On Hold
-
-        proximidadBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager manager = getFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                FragmentEventosProximosDespuesDeFiltro fragment = new FragmentEventosProximosDespuesDeFiltro();
-                transaction.replace(R.id.ViewPager_Main, fragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });
-        */

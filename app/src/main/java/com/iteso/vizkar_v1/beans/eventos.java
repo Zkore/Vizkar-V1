@@ -16,11 +16,12 @@ public class eventos implements Parcelable {
 
     }
 
-    public eventos(int id, String name, String type, String city){
+    public eventos(int id, String name, String type, String city,String timestamp){
         this.id = id;
         this.name = name;
         this.type = type;
         this.city = city;
+        this.timestamp = timestamp;
     }
 
 

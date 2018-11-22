@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.iteso.vizkar_v1.R;
+import com.iteso.vizkar_v1.beans.FragmentEventosProximos;
 
 import java.util.ArrayList;
 
@@ -53,22 +54,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.event_card, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_card, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        //holder.mEventName.setText(evento.get(holder.getAdapterPosition()).getName());
-        //holder.mTypeName.setText(evento.get(holder.getAdapterPosition()).getType());
-        //holder.mDateEvent.setText(evento.get(holder.getAdapterPosition()).getTimestamp());
+        eventos mEventos = evento.get(position);
+
+        holder.mCityName.setText(mEventos.getCity());
+        holder.mTypeName.setText(mEventos.getType());
+        holder.mDateEvent.setText(mEventos.getTimestamp());
+        holder.mEventName.setText(mEventos.getName());
 
     }
 
     @Override
     public int getItemCount() {
-        return 15;
-        //return evento.size();
+        return evento.size();
     }
 }
