@@ -31,16 +31,17 @@ public class activitySignUpScreen extends AppCompatActivity {
     TextView Atras;
     ImageView Logo, PassLogo, UserLogo, MailLogo;
     private FirebaseAuth mAuth;
+    FirebaseUser currentUser;
     com.google.android.gms.common.SignInButton gLogin;
     private static int RC_SIGN_IN = 100;
     GoogleSignInClient mGoogleSignInClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_screen);
-
-
         mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
         Logo = findViewById(R.id.vizkarLogo);
         PassLogo = findViewById(R.id.passwordLogo);
         UserLogo = findViewById(R.id.userLogo);
@@ -50,30 +51,36 @@ public class activitySignUpScreen extends AppCompatActivity {
         MailLogo.setImageResource(R.drawable.logo_mail);
         Atras = findViewById(R.id.lblAtras);
         gLogin =  findViewById(R.id.sign_in_button);
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        if (currentUser != null) {
+        }
+        else{
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken("415423395842-rfjkja68r19cki758uscnvbrj94cmijg.apps.googleusercontent.com")
+                    .requestEmail()
+                    .build();
+            mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        }
         Glide.with(this).load("https://thumbs.gfycat.com/DearDescriptiveBlacklemur-small.gif").into(Logo);
         SignUp = findViewById(R.id.login);
         gLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startSignInIntent();
+             if (currentUser != null) {
+                    Toast.makeText(view.getContext(), "Ya te has registrado con tu usuario de google.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    startSignInIntent();
+                }
+
             }
         });
         SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isSignedIn() == true) {
-                    Toast.makeText(view.getContext(), "Ya te has registrado con tu usuario de google.", Toast.LENGTH_SHORT).show();
-                }
-                else{
                     Intent intent = new Intent( view.getContext(), activityMain.class);
                     startActivity(intent);
                     finish();
-                }
             }
         });
         Atras.setOnClickListener(new View.OnClickListener() {
@@ -84,10 +91,6 @@ public class activitySignUpScreen extends AppCompatActivity {
                 finish();
             }
         });
-    }
-    private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     @Override
@@ -102,7 +105,7 @@ public class activitySignUpScreen extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-        //agregar toast de error
+                Toast.makeText(this, "Error al registrarse con Google.", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -115,8 +118,8 @@ public class activitySignUpScreen extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            currentUser = mAuth.getCurrentUser();
+                            updateUI(currentUser);
                         } else {
                             Toast.makeText(getApplicationContext(), "error en login con google..", Toast.LENGTH_SHORT).show();
                         }
@@ -127,17 +130,12 @@ public class activitySignUpScreen extends AppCompatActivity {
     }
 
     private void startSignInIntent() {
-        GoogleSignInClient signInClient = GoogleSignIn.getClient(this,
-                GoogleSignInOptions.DEFAULT_SIGN_IN);
-        Intent intent = signInClient.getSignInIntent();
-        startActivityForResult(intent, RC_SIGN_IN);
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
     private void updateUI(FirebaseUser account) {
         Intent intent = new Intent( this, activityMain.class);
         startActivity(intent);
         finish();
-    }
-    private boolean isSignedIn() {
-        return GoogleSignIn.getLastSignedInAccount(this) != null;
     }
 }
