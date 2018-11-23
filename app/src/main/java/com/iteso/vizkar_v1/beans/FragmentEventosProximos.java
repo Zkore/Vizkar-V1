@@ -25,6 +25,7 @@ import java.util.ArrayList;
 public class FragmentEventosProximos extends Fragment {
 
     public static final ArrayList<eventos> eventosArrayList  = new ArrayList<>();
+    public static  Boolean isLoaded = false;
 
     fragmentMisEventos fragmento;
 
@@ -32,7 +33,7 @@ public class FragmentEventosProximos extends Fragment {
     //public ArrayList<eventos> eventosArrayList;
     public MyAdapter myAdapter1;
     Button btn_like;
-    Boolean isLoaded = false;
+    //Boolean isLoaded = false;
 
 
     public FragmentEventosProximos(){
@@ -48,6 +49,8 @@ public class FragmentEventosProximos extends Fragment {
         //return inflater.inflate(R.layout.fragment_fragment_eventos_prox, container, false);
         View view = inflater.inflate(R.layout.fragment_fragment_eventos_prox, container,false);
         recyclerView = view.findViewById(R.id.recycler_view);
+
+
 
 
 
@@ -68,6 +71,7 @@ public class FragmentEventosProximos extends Fragment {
         eventosArrayList.add(new eventos(2,"Pal Norte", "Musica","Monterrey","23 Agosto",Boolean.FALSE));
         eventosArrayList.add(new eventos(3,"PalSur","Musica","Guanajuato","4 Mayo",Boolean.TRUE));
 */
+
 
         eventos eventosAgregar1 = new eventos(1,"Coordenada","Musica","Guadalajara","27 Junio",Boolean.FALSE);
         eventos eventosAgregar2 = new eventos(2,"Pal Norte", "Musica","Monterrey","23 Agosto",Boolean.FALSE);
