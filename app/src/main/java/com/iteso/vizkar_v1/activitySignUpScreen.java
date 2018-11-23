@@ -66,9 +66,14 @@ public class activitySignUpScreen extends AppCompatActivity {
         SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( view.getContext(), activityMain.class);
-                startActivity(intent);
-                finish();
+                if (isSignedIn() == true) {
+                    Toast.makeText(view.getContext(), "Ya te has registrado con tu usuario de google.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Intent intent = new Intent( view.getContext(), activityMain.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
         Atras.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +118,7 @@ public class activitySignUpScreen extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
-                            Toast.makeText(getApplicationContext(), "rechazo login con google..", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "error en login con google..", Toast.LENGTH_SHORT).show();
                         }
 
                         // ...
@@ -131,5 +136,8 @@ public class activitySignUpScreen extends AppCompatActivity {
         Intent intent = new Intent( this, activityMain.class);
         startActivity(intent);
         finish();
+    }
+    private boolean isSignedIn() {
+        return GoogleSignIn.getLastSignedInAccount(this) != null;
     }
 }
