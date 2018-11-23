@@ -24,12 +24,12 @@ import java.util.ArrayList;
 
 public class FragmentEventosProximos extends Fragment {
 
-    public static final ArrayList<eventos> eventosArrayList  = new ArrayList<>();
+    //public static final ArrayList<eventos> eventosArrayList  = new ArrayList<>();
 
     fragmentMisEventos fragmento;
 
     private RecyclerView recyclerView;
-    //public ArrayList<eventos> eventosArrayList;
+    public ArrayList<eventos> eventosArrayList;
     public MyAdapter myAdapter1;
     Button btn_like;
 
@@ -61,7 +61,7 @@ public class FragmentEventosProximos extends Fragment {
         // Use a linear layout manager
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
-        //eventosArrayList = new ArrayList<>();
+        eventosArrayList = new ArrayList<>();
         eventosArrayList.add(new eventos(1,"Coordenada","Musica","Guadalajara","27 Junio",Boolean.FALSE));
         eventosArrayList.add(new eventos(2,"Pal Norte", "Musica","Monterrey","23 Agosto",Boolean.FALSE));
         eventosArrayList.add(new eventos(3,"PalSur","Musica","Guanajuato","4 Mayo",Boolean.TRUE));

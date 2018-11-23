@@ -103,7 +103,7 @@ public class activityMain extends AppCompatActivity {
                     }
                     return fragmentPerfil;
                 default:
-                    return new FragmentEventosProximos();
+                    return new FragmentPerfil();
             }
         }
 
