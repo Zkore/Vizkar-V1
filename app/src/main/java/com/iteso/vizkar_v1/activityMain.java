@@ -54,6 +54,7 @@ public class activityMain extends AppCompatActivity {
 
 
 
+
         //Para obtener
         try {
             PackageInfo info = getPackageManager().getPackageInfo("com.iteso.vizkar_v1", PackageManager.GET_SIGNATURES);
@@ -136,6 +137,8 @@ public class activityMain extends AppCompatActivity {
             return null;
         }
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

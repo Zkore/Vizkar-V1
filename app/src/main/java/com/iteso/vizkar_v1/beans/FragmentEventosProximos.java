@@ -24,8 +24,9 @@ import java.util.ArrayList;
 
 public class FragmentEventosProximos extends Fragment {
 
-    public static final ArrayList<eventos> eventosArrayList  = new ArrayList<>();
+    public static  ArrayList<eventos> eventosArrayList  = new ArrayList<>();
     public static  Boolean isLoaded = false;
+    public static  Boolean isLoadedLogout = false;
 
     fragmentMisEventos fragmento;
 
@@ -50,10 +51,6 @@ public class FragmentEventosProximos extends Fragment {
         View view = inflater.inflate(R.layout.fragment_fragment_eventos_prox, container,false);
         recyclerView = view.findViewById(R.id.recycler_view);
 
-
-
-
-
         return view;
     }
 
@@ -73,19 +70,20 @@ public class FragmentEventosProximos extends Fragment {
 */
 
 
-        eventos eventosAgregar1 = new eventos(1,"Coordenada","Musica","Guadalajara","27 Junio",Boolean.FALSE);
-        eventos eventosAgregar2 = new eventos(2,"Pal Norte", "Musica","Monterrey","23 Agosto",Boolean.FALSE);
-        eventos eventosAgregar3 = new eventos(3,"Pal Sur","Musica","Guanajuato","4 Mayo",Boolean.FALSE);
+        eventos eventosAgregar1 = new eventos(1,"Coordenada","Musica","Guadalajara","27 Junio",1,Boolean.TRUE);
+        eventos eventosAgregar2 = new eventos(2,"Pal Norte", "Musica","Monterrey","23 Agosto",2,Boolean.TRUE);
+        eventos eventosAgregar3 = new eventos(3,"Pal Sur","Musica","Guanajuato","4 Mayo",100,Boolean.FALSE);
 
-        if (isLoaded == false) {
-            eventosArrayList.add(eventosAgregar1);
-            eventosArrayList.add(eventosAgregar2);
-            eventosArrayList.add(eventosAgregar3);
-            myAdapter1 = new MyAdapter(Constant.FRAGMENT_EVENTOSPROXIMOS, getContext(), eventosArrayList);
-            isLoaded = true;
+        if(isLoadedLogout == false) {
+            if (isLoaded == false) {
+                eventosArrayList.add(eventosAgregar1);
+                eventosArrayList.add(eventosAgregar2);
+                eventosArrayList.add(eventosAgregar3);
+
+                isLoaded = true;
+            }
         }
-
-
+        myAdapter1 = new MyAdapter(Constant.FRAGMENT_EVENTOSPROXIMOS, getContext(), eventosArrayList);
          //myAdapter1 = new MyAdapter(Constant.FRAGMENT_MISEVENTOS, getContext(), eventosArrayList);
 
         recyclerView.setAdapter(myAdapter1);

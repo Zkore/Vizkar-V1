@@ -1,6 +1,7 @@
 package com.iteso.vizkar_v1.beans;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -37,6 +38,8 @@ public class fragmentMisEventos extends Fragment {
     public fragmentMisEventos(){
 
     }
+
+
 
     @Nullable
     @Override
@@ -87,11 +90,15 @@ public class fragmentMisEventos extends Fragment {
 //Para agregar o quitar
 
 
-        eventos eventosAgregar1 = new eventos(1,"No","Musica","Guadalajara","27 Junio",Boolean.TRUE);
+        Log.e("Eventos","Vuelve a cargar " );
+         eventos eventosAgregar1 = new eventos(1,"Coordenada","Musica","Guadalajara","27 Junio",1,Boolean.TRUE);
+        if (eventosAgregar1.getLike() == Boolean.TRUE)
         eventosArrayList.add(eventosAgregar1);
-        eventos eventosAgregar2 = new eventos(2,"No", "Musica","Monterrey","23 Agosto",Boolean.TRUE);
+        eventos eventosAgregar2 = new eventos(2,"Pal Norte", "Musica","Monterrey","23 Agosto",2,Boolean.TRUE);
+        if (eventosAgregar2.getLike() == Boolean.TRUE)
         eventosArrayList.add(eventosAgregar2);
-        eventos eventosAgregar3 = new eventos(3,"Si","Musica","Guanajuato","4 Mayo",Boolean.TRUE);
+        eventos eventosAgregar3 = new eventos(3,"Pal Sur","Musica","Guanajuato","4 Mayo",100,Boolean.FALSE);
+        if (eventosAgregar3.getLike() == Boolean.TRUE)
         eventosArrayList.add(eventosAgregar3);
 
         //Log.e("Eventos","La cantidad de elementos son: " + eventosArrayList2.size());
@@ -106,6 +113,12 @@ public class fragmentMisEventos extends Fragment {
 
         recyclerView.setAdapter(myAdapter2);
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
 }
 
 
