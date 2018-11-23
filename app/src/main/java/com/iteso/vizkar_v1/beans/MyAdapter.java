@@ -82,15 +82,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.mLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Added to my events " + position + "Like: "+ mEventos.getLike(), Toast.LENGTH_SHORT).show();
                 mEventos.setLike(!(mEventos.getLike()));
                 if(mEventos.getLike() == Boolean.TRUE);
                 {
-
+                    Toast.makeText(context, "Added of my events " + position + "Like: "+ mEventos.getLike(), Toast.LENGTH_SHORT).show();
                     holder.mLike.setText("Dislike");
 
                 }
                 if (mEventos.getLike() == Boolean.FALSE){
+                    Toast.makeText(context, "Removed to my events " + position + "Like: "+ mEventos.getLike(), Toast.LENGTH_SHORT).show();
                     holder.mLike.setText("Like");
                 }
                 //Toast.makeText(context, "En Adapter" , Toast.LENGTH_SHORT).show();
