@@ -102,6 +102,7 @@ public class FragmentPerfil extends Fragment {
         Intent intent = new Intent(getActivity(), activityLoginScreen.class);
         startActivity(intent);
         getActivity().onBackPressed();
+        FragmentEventosProximos.isLoadedLogout = true;
 
     }
 

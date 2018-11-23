@@ -6,7 +6,7 @@ import android.os.Parcelable;
 public class eventos implements Parcelable {
 
     private int id;
-    private String picture;
+    private int picture;
     private String name;
     private String type;
     private String city;
@@ -43,12 +43,13 @@ public class eventos implements Parcelable {
                 '}';
     }
 
-    public eventos(int id, String name, String type, String city, String timestamp, Boolean like){
+    public eventos(int id, String name, String type, String city, String timestamp, int picture ,Boolean like){
         this.id = id;
         this.name = name;
         this.type = type;
         this.city = city;
         this.timestamp = timestamp;
+        this.picture = picture;
         this.like = like;
     }
 
@@ -61,11 +62,11 @@ public class eventos implements Parcelable {
         this.id = id;
     }
 
-    public String getPicture() {
+    public int getPicture() {
         return picture;
     }
 
-    public void setPicture(String picture) {
+    public void setPicture(int picture) {
         this.picture = picture;
     }
 
@@ -118,7 +119,7 @@ public class eventos implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.id);
-        dest.writeString(this.picture);
+        dest.writeInt(this.picture);
         dest.writeString(this.name);
         dest.writeString(this.type);
         dest.writeString(this.city);
@@ -128,7 +129,7 @@ public class eventos implements Parcelable {
 
     protected eventos(Parcel in) {
         this.id = in.readInt();
-        this.picture = in.readString();
+        this.picture = in.readInt();
         this.name = in.readString();
         this.type = in.readString();
         this.city = in.readString();

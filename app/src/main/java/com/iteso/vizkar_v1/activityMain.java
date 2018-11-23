@@ -1,6 +1,7 @@
 package com.iteso.vizkar_v1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -32,6 +33,7 @@ public class activityMain extends AppCompatActivity {
     private FragmentEventosProximos fragmentEventosProximos;
     private fragmentMisEventos fragmentMisEventos1;
     private FragmentPerfil fragmentPerfil;
+    private SharedPreferences sharedPreferences;
 
 
     @Override
@@ -46,6 +48,12 @@ public class activityMain extends AppCompatActivity {
         ViewPager mViewPager = findViewById(R.id.ViewPager_Main);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabLayout.setupWithViewPager(mViewPager);
+
+        sharedPreferences = getSharedPreferences("mypref",0);
+        FragmentEventosProximos.isLoaded = sharedPreferences.getBoolean("loaded",FragmentEventosProximos.isLoaded);
+
+
+
 
         //Para obtener
         try {
@@ -130,6 +138,8 @@ public class activityMain extends AppCompatActivity {
         }
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -151,6 +161,15 @@ public class activityMain extends AppCompatActivity {
         Intent intent = new Intent( this, activityLoginScreen.class);
         PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().clear().apply();
         this.startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sharedPreferences = getSharedPreferences("Loaded", 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("loaded", FragmentEventosProximos.isLoaded);
+        editor.commit();
     }
 }
 

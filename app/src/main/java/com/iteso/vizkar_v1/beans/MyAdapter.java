@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.iteso.vizkar_v1.R;
 import com.iteso.vizkar_v1.beans.FragmentEventosProximos;
+import com.iteso.vizkar_v1.tools.Constant;
 
 import java.util.ArrayList;
 
@@ -68,29 +70,39 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final eventos mEventos = evento.get(position);
 
-        if(mEventos.getLike() == Boolean.TRUE);
+        if(mEventos.getLike() == Boolean.TRUE)
         holder.mLike.setText("Dislike");
-        if (mEventos.getLike() == Boolean.FALSE){
-            holder.mLike.setText("Like");
-        }
+        else
+        holder.mLike.setText("Like");
 
         holder.mCityName.setText(mEventos.getCity());
         holder.mTypeName.setText(mEventos.getType());
         holder.mDateEvent.setText(mEventos.getTimestamp());
         holder.mEventName.setText(mEventos.getName());
 
+        switch (mEventos.getPicture()){
+            case Constant.TYPE_COORDENADA: //Coordenada
+                holder.mImage.setImageResource(R.drawable.coordenada); break;
+            case Constant.TYPE_PALNORTE:
+                holder.mImage.setImageResource(R.drawable.palnorte); break;
+            case Constant.TYPE_UNKNOWS:
+                holder.mImage.setImageResource(R.drawable.sad_emoji); break;
+        }
+
         holder.mLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Added to my events " + position + "Like: "+ mEventos.getLike(), Toast.LENGTH_SHORT).show();
+                //Log.e("Like" , ""+mEventos.getLike());
                 mEventos.setLike(!(mEventos.getLike()));
-                if(mEventos.getLike() == Boolean.TRUE);
+                if(mEventos.getLike() == Boolean.TRUE)
                 {
-
+                    Toast.makeText(context, "Added to my events " , Toast.LENGTH_SHORT).show();
                     holder.mLike.setText("Dislike");
+                    mEventos.setLike(Boolean.TRUE);
 
                 }
-                if (mEventos.getLike() == Boolean.FALSE){
+                else {
+                    Toast.makeText(context, "Removed of my events " , Toast.LENGTH_SHORT).show();
                     holder.mLike.setText("Like");
                 }
                 //Toast.makeText(context, "En Adapter" , Toast.LENGTH_SHORT).show();
