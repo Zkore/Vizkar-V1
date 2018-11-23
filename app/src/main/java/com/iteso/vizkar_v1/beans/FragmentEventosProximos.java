@@ -1,12 +1,11 @@
 package com.iteso.vizkar_v1.beans;
 
-import android.content.Intent;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,7 +17,6 @@ import com.iteso.vizkar_v1.R;
 import com.iteso.vizkar_v1.tools.Constant;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,9 +24,14 @@ import java.util.Iterator;
 
 public class FragmentEventosProximos extends Fragment {
 
+    public static final ArrayList<eventos> eventosArrayList  = new ArrayList<>();
+
+    fragmentMisEventos fragmento;
+
     private RecyclerView recyclerView;
-    public ArrayList<eventos> eventosArrayList;
-    MyAdapter adapterEvent;
+    //public ArrayList<eventos> eventosArrayList;
+    public MyAdapter myAdapter1;
+    Button btn_like;
 
 
     public FragmentEventosProximos(){
@@ -46,6 +49,7 @@ public class FragmentEventosProximos extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_view);
 
 
+
         return view;
     }
 
@@ -57,15 +61,29 @@ public class FragmentEventosProximos extends Fragment {
         // Use a linear layout manager
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
-        MyAdapter myAdapter = new MyAdapter();
-        eventosArrayList = new ArrayList<>();
-        eventosArrayList.add(new eventos(1,"Coordenada","Musica","Guadalajara","27 Junio"));
-        eventosArrayList.add(new eventos(2,"Pal Norte", "Musica","Monterrey","23 Agosto"));
-        eventosArrayList.add(new eventos(3,"PalSur","Musica","Guanajuato","4 Mayo"));
+        //eventosArrayList = new ArrayList<>();
+        eventosArrayList.add(new eventos(1,"Coordenada","Musica","Guadalajara","27 Junio",Boolean.FALSE));
+        eventosArrayList.add(new eventos(2,"Pal Norte", "Musica","Monterrey","23 Agosto",Boolean.FALSE));
+        eventosArrayList.add(new eventos(3,"PalSur","Musica","Guanajuato","4 Mayo",Boolean.TRUE));
 
-        MyAdapter myAdapter1 = new MyAdapter(Constant.FRAGMENT_EVENTOSPROXIMOS, getContext(), eventosArrayList);
+
+         myAdapter1 = new MyAdapter(Constant.FRAGMENT_EVENTOSPROXIMOS, getContext(), eventosArrayList);
+         //myAdapter1 = new MyAdapter(Constant.FRAGMENT_MISEVENTOS, getContext(), eventosArrayList);
+
         recyclerView.setAdapter(myAdapter1);
     }
+
+
+/*
+    @Override
+    public void onPause() {
+        super.onPause();
+        SharedPreferences valor = getSharedPreferences(eventosArrayList, 0);
+        SharedPreferences.Editor editor = valor.edit();
+        editor.putString("Eventos", String.valueOf(eventosArrayList));
+        editor.commit();
+    }
+*/
 
 
 }

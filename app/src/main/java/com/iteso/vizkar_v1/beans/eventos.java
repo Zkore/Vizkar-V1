@@ -11,17 +11,45 @@ public class eventos implements Parcelable {
     private String type;
     private String city;
     private String timestamp;
+    //False = Dislike,. True = like
+    private Boolean like;
 
     public eventos(){
 
     }
 
-    public eventos(int id, String name, String type, String city,String timestamp){
+    @Override
+    public String toString() {
+        return "eventos{" +
+                "id=" + id +
+                ", picture='" + picture + '\'' +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", city='" + city + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                ", like=" + like +
+                '}';
+    }
+
+    public String toStringToAdd() {
+        return "eventos{" +
+                "id=" + id +
+                ", picture='" + picture + '\'' +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", city='" + city + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                ", like=" + like +
+                '}';
+    }
+
+    public eventos(int id, String name, String type, String city, String timestamp, Boolean like){
         this.id = id;
         this.name = name;
         this.type = type;
         this.city = city;
         this.timestamp = timestamp;
+        this.like = like;
     }
 
 
@@ -73,6 +101,15 @@ public class eventos implements Parcelable {
         this.timestamp = timestamp;
     }
 
+    public Boolean getLike() {
+        return like;
+    }
+
+    public void setLike(Boolean like) {
+        this.like = like;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -86,6 +123,7 @@ public class eventos implements Parcelable {
         dest.writeString(this.type);
         dest.writeString(this.city);
         dest.writeString(this.timestamp);
+        dest.writeValue(this.like);
     }
 
     protected eventos(Parcel in) {
@@ -95,10 +133,10 @@ public class eventos implements Parcelable {
         this.type = in.readString();
         this.city = in.readString();
         this.timestamp = in.readString();
+        this.like = (Boolean) in.readValue(Boolean.class.getClassLoader());
     }
 
-
-    public static final Parcelable.Creator<eventos> CREATOR = new Parcelable.Creator<eventos>() {
+    public static final Creator<eventos> CREATOR = new Creator<eventos>() {
         @Override
         public eventos createFromParcel(Parcel source) {
             return new eventos(source);
