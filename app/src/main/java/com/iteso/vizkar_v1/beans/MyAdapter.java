@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +45,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         TextView mCityName;
         RelativeLayout mDetail;
         ImageView mImage;
+        LinearLayout viewCard;
         Button mLike;
 
         ViewHolder(View v){
@@ -55,6 +57,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             mDetail = v.findViewById(R.id.item_product_layout);
             mCityName = v.findViewById(R.id.city_of_the_event);
             mLike = v.findViewById(R.id.Btn_like_disklike);
+            viewCard = v.findViewById(R.id.linear_layout_card_to_view);
         }
     }
 
@@ -88,6 +91,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             case Constant.TYPE_UNKNOWS:
                 holder.mImage.setImageResource(R.drawable.sad_emoji); break;
         }
+
+        holder.viewCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
 
         holder.mLike.setOnClickListener(new View.OnClickListener() {
             @Override

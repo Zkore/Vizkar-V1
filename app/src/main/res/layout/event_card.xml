@@ -37,7 +37,9 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:id="@+id/linear_layout_card_to_view"
                 android:orientation="vertical">
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
