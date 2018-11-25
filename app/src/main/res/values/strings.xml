@@ -31,7 +31,7 @@
     <string name="myEvents_nothingInHere">Theres nothing in here</string>
     <string name="myEvents_title">MY EVENTS</string>
     <string name="upcomingEvents_title">UPCOMING EVENTS</string>
-
+    <string name="title_activity_view_image">ActivityViewImage</string>
 
 
 </resources>

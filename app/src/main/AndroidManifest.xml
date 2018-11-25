@@ -17,7 +17,8 @@
         android:roundIcon="@drawable/penguin_icono"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivitySplashScreen"
+        <activity
+            android:name=".ActivitySplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,16 +26,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activityMain"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activityLoginScreen"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activitySignUpScreen"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activityMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activityLoginScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitySignUpScreen"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityInicial"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_inicial"></activity>
+            android:label="@string/title_activity_inicial"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityViewImage"
+            android:label="@string/title_activity_view_image"></activity>
     </application>
 
 </manifest>

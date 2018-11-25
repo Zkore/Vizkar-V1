@@ -9,7 +9,11 @@ public class Constant {
 
     public static final int TYPE_COORDENADA = 1;
     public static final int TYPE_PALNORTE = 2;
-    public static final int TYPE_UNKNOWS = 100;
+    public static final int TYPE_UNKNOWS = 0;
+
+    public static final int TYPE_COORDENADA_BIG_PIC = 101;
+    public static final int TYPE_PALNORTE_BIG_PIC = 102;
+    public static final int TYPE_UNKNOWS_BIG_PIC = 100;
 
 
 }

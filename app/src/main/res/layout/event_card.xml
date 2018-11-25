@@ -9,6 +9,7 @@
     android:scrollbarStyle="outsideOverlay"
     card_view:cardCornerRadius="4dp">
 
+
     <RelativeLayout
         android:id="@+id/item_product_layout"
         android:layout_width="match_parent"
@@ -115,4 +116,7 @@
 
 
     </RelativeLayout>
+
+
+
 </android.support.v7.widget.CardView>

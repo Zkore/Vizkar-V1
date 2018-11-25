@@ -1,6 +1,7 @@
 package com.iteso.vizkar_v1.beans;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,11 +9,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.github.chrisbanes.photoview.PhotoView;
+import com.iteso.vizkar_v1.ActivityViewImage;
 import com.iteso.vizkar_v1.R;
 import com.iteso.vizkar_v1.tools.Constant;
 
@@ -33,7 +37,8 @@ public class FragmentEventosProximos extends Fragment {
     private RecyclerView recyclerView;
     //public ArrayList<eventos> eventosArrayList;
     public MyAdapter myAdapter1;
-    Button btn_like;
+    Button verImagen;
+    PhotoView photoView ;
     //Boolean isLoaded = false;
 
 
@@ -49,7 +54,11 @@ public class FragmentEventosProximos extends Fragment {
         //return super.onCreateView(inflater, container, savedInstanceState);
         //return inflater.inflate(R.layout.fragment_fragment_eventos_prox, container, false);
         View view = inflater.inflate(R.layout.fragment_fragment_eventos_prox, container,false);
-        recyclerView = view.findViewById(R.id.recycler_view);
+        verImagen = view.findViewById(R.id.cambioAVerimagen);
+
+        photoView = view.findViewById(R.id.photo_view);
+
+        recyclerView = view.findViewById(R.id.recycler_view_eventos_proximos);
 
         return view;
     }
@@ -68,6 +77,12 @@ public class FragmentEventosProximos extends Fragment {
         eventosArrayList.add(new eventos(2,"Pal Norte", "Musica","Monterrey","23 Agosto",Boolean.FALSE));
         eventosArrayList.add(new eventos(3,"PalSur","Musica","Guanajuato","4 Mayo",Boolean.TRUE));
 */
+        verImagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openZoomImage();
+            }
+        });
 
 
         eventos eventosAgregar1 = new eventos(1,"Coordenada","Musica","Guadalajara","27 Junio",1,Boolean.TRUE);
@@ -80,6 +95,8 @@ public class FragmentEventosProximos extends Fragment {
                 eventosArrayList.add(eventosAgregar2);
                 eventosArrayList.add(eventosAgregar3);
 
+                Log.e("openZoomImage","Es llamado");
+
                 isLoaded = true;
             }
         }
@@ -89,6 +106,11 @@ public class FragmentEventosProximos extends Fragment {
         recyclerView.setAdapter(myAdapter1);
     }
 
+    public void openZoomImage(){
+        Log.e("openZoomImage","Es casteado");
+        Intent intent = new Intent(getActivity() , ActivityViewImage.class);
+        startActivity(intent);
+    }
 
 /*
     @Override

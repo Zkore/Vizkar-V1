@@ -3,6 +3,8 @@ package com.iteso.vizkar_v1.beans;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +17,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.chrisbanes.photoview.PhotoView;
+import com.iteso.vizkar_v1.ActivityViewImage;
 import com.iteso.vizkar_v1.R;
 import com.iteso.vizkar_v1.beans.FragmentEventosProximos;
 import com.iteso.vizkar_v1.tools.Constant;
@@ -26,7 +30,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private ArrayList<eventos> evento;
     private Context context;
     private int fragment;
-    fragmentMisEventos misEventos;
+    fragmentMisEventos misEventos = new fragmentMisEventos();
+    FragmentEventosProximos eventosProximos  = new FragmentEventosProximos();
+
 
     MyAdapter(int fragment, Context context, ArrayList<eventos> evento){
         this.fragment = fragment;
@@ -47,6 +53,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         ImageView mImage;
         LinearLayout viewCard;
         Button mLike;
+        PhotoView photoView;
 
         ViewHolder(View v){
             super(v);
@@ -58,6 +65,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             mCityName = v.findViewById(R.id.city_of_the_event);
             mLike = v.findViewById(R.id.Btn_like_disklike);
             viewCard = v.findViewById(R.id.linear_layout_card_to_view);
+            photoView = (PhotoView) v.findViewById(R.id.photo_view);
+
         }
     }
 
@@ -66,6 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_card, parent, false);
+
         return new ViewHolder(v);
     }
 
@@ -95,9 +105,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.viewCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                Toast.makeText(context, "Funciona la carta" + mEventos.getPicture() , Toast.LENGTH_SHORT).show();
+                //eventosProximos.openZoomImage();
+                int aMandar = mEventos.getPicture() + 100;
+                Intent intent = new Intent(context , ActivityViewImage.class);
+                intent.putExtra("imagen",aMandar);
+                context.startActivity(intent);
+
             }
         });
+
+
 
         holder.mLike.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +137,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             }
         });
     }
+
+
 
     @Override
     public int getItemCount() {
