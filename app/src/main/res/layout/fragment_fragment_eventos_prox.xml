@@ -8,6 +8,24 @@
         android:background="@drawable/main_background"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hola"
+        android:id="@+id/cambioAVerimagen"
+        android:visibility="gone"/>
+
+    <ImageButton
+        android:id="@+id/refresh_UPCOMING"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/mainTransparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/refresh"
+        />
+
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,6 +36,7 @@
         app:layout_constraintRight_toRightOf="parent"
         />
 
+
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
@@ -27,7 +46,7 @@
 
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_view"
+                android:id="@+id/recycler_view_eventos_proximos"
                 android:layout_width="match_parent"
                 android:layout_marginTop="70dp"
                 android:layout_height="match_parent"
