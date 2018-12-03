@@ -8,7 +8,7 @@ public class eventos implements Parcelable {
     private int id;
     private int picture;
     private String name;
-    private String type;
+    private int type;
     private String city;
     private String timestamp;
     //False = Dislike,. True = like
@@ -43,7 +43,7 @@ public class eventos implements Parcelable {
                 '}';
     }
 
-    public eventos(int id, String name, String type, String city, String timestamp, int picture ,Boolean like){
+    public eventos(int id, String name, int type, String city, String timestamp, int picture ,Boolean like){
         this.id = id;
         this.name = name;
         this.type = type;
@@ -78,11 +78,11 @@ public class eventos implements Parcelable {
         this.name = name;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 
@@ -121,7 +121,7 @@ public class eventos implements Parcelable {
         dest.writeInt(this.id);
         dest.writeInt(this.picture);
         dest.writeString(this.name);
-        dest.writeString(this.type);
+        dest.writeInt(this.type);
         dest.writeString(this.city);
         dest.writeString(this.timestamp);
         dest.writeValue(this.like);
@@ -131,7 +131,7 @@ public class eventos implements Parcelable {
         this.id = in.readInt();
         this.picture = in.readInt();
         this.name = in.readString();
-        this.type = in.readString();
+        this.type = in.readInt();
         this.city = in.readString();
         this.timestamp = in.readString();
         this.like = (Boolean) in.readValue(Boolean.class.getClassLoader());
