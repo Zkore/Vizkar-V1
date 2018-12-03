@@ -46,7 +46,7 @@ public class fragmentMisEventos extends Fragment {
     DatabaseReference firebaseName = FirebaseDatabase.getInstance().getReference().child("NombreDeEventos");
 
     private RecyclerView recyclerView;
-    public ArrayList<eventos> eventosArrayList;
+    public ArrayList<eventos> eventosArrayList = new ArrayList<>();
     FragmentEventosProximos frags;
     int i = 0;
 
@@ -104,19 +104,20 @@ public class fragmentMisEventos extends Fragment {
         // Use a linear layout manager
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
-        eventosArrayList = new ArrayList<>();
+        //eventosArrayList = new ArrayList<>();
 
 //Para agregar o quitar
 
 
         //Log.e("Eventos","Vuelve a cargar " );
-         eventos eventosAgregar1 = new eventos(1,"Coordenada",1,"Guadalajara","27 Junio",1,Boolean.TRUE);
-        if (eventosAgregar1.getLike() == Boolean.TRUE)
-        eventosArrayList.add(eventosAgregar1);
+         //eventos eventosAgregar1 = new eventos(1,"Coordenada",1,"Guadalajara","27 Junio",1,Boolean.TRUE);
+        //if (eventosAgregar1.getLike() == Boolean.TRUE)
+        //eventosArrayList.add(eventosAgregar1);
 
         firebaseName.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                eventosArrayList = new ArrayList<>();
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     String name = ds.getKey();
                     //Log.e("EventosName","Nombre es : " + name);

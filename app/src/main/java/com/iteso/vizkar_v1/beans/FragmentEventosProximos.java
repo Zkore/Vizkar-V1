@@ -92,7 +92,7 @@ public class FragmentEventosProximos extends Fragment {
         // Use a linear layout manager
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
-        eventosArrayList = new ArrayList<>();
+        //eventosArrayList = new ArrayList<>();
 
         eventosArrayList.add(new eventos(1,"Coordenada",1,"Guadalajara","27 Junio",1,Boolean.TRUE));
         verImagen.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +105,7 @@ public class FragmentEventosProximos extends Fragment {
         firebaseName.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                eventosArrayList = new ArrayList<>();
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     String name = ds.getKey();
                     //Log.e("EventosName","Nombre es : " + name);
