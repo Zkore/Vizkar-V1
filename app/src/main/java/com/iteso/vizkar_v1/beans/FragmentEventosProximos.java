@@ -94,7 +94,7 @@ public class FragmentEventosProximos extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         //eventosArrayList = new ArrayList<>();
 
-        eventosArrayList.add(new eventos(1,"Coordenada",1,"Guadalajara","27 Junio",1,Boolean.TRUE));
+        //eventosArrayList.add(new eventos(1,"Coordenada",1,"Guadalajara","27 Junio",1,Boolean.TRUE));
         verImagen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
