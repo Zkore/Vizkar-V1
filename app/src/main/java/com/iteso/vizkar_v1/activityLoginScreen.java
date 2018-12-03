@@ -65,8 +65,6 @@ public class activityLoginScreen extends AppCompatActivity {
         if (currentUser != null) {
             updateUI(currentUser);
         }
-
-
         gLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +72,7 @@ public class activityLoginScreen extends AppCompatActivity {
                     updateUI(currentUser);
                 }
                 else{
-                    Toast.makeText(view.getContext(), "No te has registrado con tu usuario de google.", Toast.LENGTH_SHORT).show();
+                  startSignInIntent();
                 }
             }
         });
