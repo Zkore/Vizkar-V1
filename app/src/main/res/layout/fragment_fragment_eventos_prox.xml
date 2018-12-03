@@ -15,6 +15,15 @@
         android:id="@+id/cambioAVerimagen"
         android:visibility="gone"/>
 
+    <ImageButton
+        android:id="@+id/refresh_UPCOMING"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/mainTransparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/refresh"
+        />
+
 
 
     <TextView

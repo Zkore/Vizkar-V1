@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -20,14 +21,26 @@ public class ActivityViewImage extends Activity {
         Fresco.initialize(this);
 
         PhotoView photoView = findViewById(R.id.photo_view);
+        TextView titleTextView = findViewById(R.id.title_event_view_card);
+        TextView dateTextView = findViewById(R.id.date_event_view_card);
+        TextView cityTextView = findViewById(R.id.city_event_view_card);
 
         //Para fresco
-        SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.photo_view_fresco);
-        Uri uri ;
+        //SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.photo_view_fresco);
+        //Uri uri ;
+
 
 
         Intent intent = getIntent();
-        int intentInt = intent.getIntExtra("imagen",100);
+        int intentInt = intent.getIntExtra("Image",100);
+        String intentStringCity = intent.getStringExtra("City");
+        String intentStringName = intent.getStringExtra("Name");
+        String intentStringDate = intent.getStringExtra("Date");
+
+
+        titleTextView.setText(intentStringName);
+        cityTextView.setText(intentStringCity);
+        dateTextView.setText(intentStringDate);
 
 
         switch(intentInt)

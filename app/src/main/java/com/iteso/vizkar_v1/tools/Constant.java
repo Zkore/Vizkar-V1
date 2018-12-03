@@ -11,6 +11,10 @@ public class Constant {
     public static final int TYPE_PALNORTE = 2;
     public static final int TYPE_UNKNOWS = 0;
 
+    public static final String TYPE_MUSICA = "Musica";
+    public static final String TYPE_TEATRE = "Teatro";
+    public static final String TYPE_DANCE = "Danza";
+
     public static final int TYPE_COORDENADA_BIG_PIC = 101;
     public static final int TYPE_PALNORTE_BIG_PIC = 102;
     public static final int TYPE_UNKNOWS_BIG_PIC = 100;

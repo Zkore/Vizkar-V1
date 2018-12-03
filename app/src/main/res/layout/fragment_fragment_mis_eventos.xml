@@ -7,10 +7,6 @@
     android:background="@drawable/main_background"
     tools:context=".beans.fragmentMisEventos">
 
-    <com.github.chrisbanes.photoview.PhotoView
-        android:id="@+id/photo_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,13 +17,23 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <ImageButton
+        android:id="@+id/refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/mainTransparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/refresh"
+        />
+
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/mainPurple"
-        android:layout_below="@+id/TitleFragProxEvents"
-        ></View>
+        android:layout_below="@+id/TitleFragProxEvents">
+
+    </View>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_mis_eventos"
