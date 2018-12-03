@@ -1,6 +1,7 @@
 package com.iteso.vizkar_v1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -9,6 +10,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,8 +31,9 @@ public class activityMain extends AppCompatActivity {
 
     private static final int TOTAL_PAGES = 3;
     private FragmentEventosProximos fragmentEventosProximos;
-    private fragmentMisEventos fragmentMisEventos;
+    private fragmentMisEventos fragmentMisEventos1;
     private FragmentPerfil fragmentPerfil;
+    private SharedPreferences sharedPreferences;
 
 
     @Override
@@ -46,6 +49,12 @@ public class activityMain extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabLayout.setupWithViewPager(mViewPager);
 
+        sharedPreferences = getSharedPreferences("mypref",0);
+        FragmentEventosProximos.isLoaded = sharedPreferences.getBoolean("loaded",FragmentEventosProximos.isLoaded);
+
+
+
+
         //Para obtener
         try {
             PackageInfo info = getPackageManager().getPackageInfo("com.iteso.vizkar_v1", PackageManager.GET_SIGNATURES);
@@ -58,7 +67,6 @@ public class activityMain extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,16 +93,22 @@ public class activityMain extends AppCompatActivity {
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position) {
                 case Constant.FRAGMENT_EVENTOSPROXIMOS:
-                    if (fragmentEventosProximos == null)
+                    if (fragmentEventosProximos == null){
                         fragmentEventosProximos = new FragmentEventosProximos();
+                    Log.e("Fragment" , "EventosProximos");
+                    }
                     return fragmentEventosProximos;
                 case Constant.FRAGMENT_MISEVENTOS:
-                    if (fragmentMisEventos == null)
-                        fragmentMisEventos = new fragmentMisEventos();
-                    return fragmentMisEventos;
+                    if (fragmentMisEventos1 == null) {
+                        fragmentMisEventos1 = new fragmentMisEventos();
+                        Log.e("Fragment" , "MisEventos");
+                    }
+                    return fragmentMisEventos1;
                 case Constant.FRAGMENT_PERFIL:
-                    if (fragmentPerfil == null)
+                    if (fragmentPerfil == null) {
                         fragmentPerfil = new FragmentPerfil();
+                        Log.e("Fragment", "Perfil");
+                    }
                     return fragmentPerfil;
                 default:
                     return new FragmentEventosProximos();
@@ -124,6 +138,8 @@ public class activityMain extends AppCompatActivity {
         }
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -146,31 +162,14 @@ public class activityMain extends AppCompatActivity {
         PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().clear().apply();
         this.startActivity(intent);
     }
-    /*
+
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
-            case Constant.ACTIVITY_DETAIL:
-                if(resultCode == RESULT_OK){
-                    if(data.getExtras() != null) {
-                        int fragment = data.getExtras().getInt(Constant.EXTRA_FRAGMENT);
-                        switch (fragment) {
-                            case Constant.FRAGMENT_TECHNOLOGY:
-                                fragmentTechnology.onActivityResult(requestCode, resultCode, data);
-                                break;
-                            case Constant.FRAGMENT_HOME:
-                                fragmentHome.onActivityResult(requestCode, resultCode, data);
-                                break;
-                            case Constant.FRAGMENT_ELECTRONICS:
-                                fragmentElectronics.onActivityResult(requestCode, resultCode, data);
-                                break;
-                        }
-                    }
-                }
-                break;
-        }
+    protected void onPause() {
+        super.onPause();
+        sharedPreferences = getSharedPreferences("Loaded", 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("loaded", FragmentEventosProximos.isLoaded);
+        editor.commit();
     }
-    */
 }
 

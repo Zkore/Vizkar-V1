@@ -25,6 +25,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 import java.util.concurrent.TimeUnit;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.iteso.vizkar_v1.R;
 import com.iteso.vizkar_v1.activityLoginScreen;
 
@@ -46,8 +47,7 @@ public class FragmentPerfil extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //return super.onCreateView(inflater, container, savedInstanceState);
-        //return inflater.inflate(R.layout.fragment_fragment_perfil, container, false);
+
         View view = inflater.inflate(R.layout.fragment_fragment_perfil,container,false);
 
 
@@ -81,9 +81,11 @@ public class FragmentPerfil extends Fragment {
     }
 
     private void logOut(){
+        FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(getActivity(), activityLoginScreen.class);
         startActivity(intent);
         getActivity().onBackPressed();
+        FragmentEventosProximos.isLoadedLogout = true;
 
     }
 
