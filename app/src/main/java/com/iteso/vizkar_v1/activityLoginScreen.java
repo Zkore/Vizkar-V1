@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class activityLoginScreen extends AppCompatActivity {
     Button LogIn;
     com.google.android.gms.common.SignInButton gLogin;
     TextView Nuevo;
+    EditText Email, Password;
     ImageView Logo, PassLogo, UserLogo;
     private static int RC_SIGN_IN = 100;
     GoogleSignInClient mGoogleSignInClient;
@@ -54,11 +56,8 @@ public class activityLoginScreen extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        Email = findViewById(R.id.username);
+        Password = findViewById(R.id.password);
 
         Glide.with(this).load("https://thumbs.gfycat.com/DearDescriptiveBlacklemur-small.gif").into(Logo);
 
@@ -81,58 +80,58 @@ public class activityLoginScreen extends AppCompatActivity {
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( view.getContext(), activityMain.class);
-                startActivity(intent);
-                finish();
+           String email = Email.getText().toString();
+           String pass = Password.getText().toString();
+                if (email.isEmpty() || pass.isEmpty()) {
+                    Toast.makeText(view.getContext(), "Email o Password vacio.", Toast.LENGTH_SHORT).show();
+                } else {
+                        Register(email, pass);
+                }
             }
         });
+
         Nuevo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent( view.getContext(), activitySignUpScreen.class);
                 startActivity(intent);
                 finish();
             }
         });
     }
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            Toast.makeText(getApplicationContext(), "error en login con google..", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
-            } catch (ApiException e) {
-                Toast.makeText(this, "No habia un registro previo con Google.", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
     private void startSignInIntent() {
+        try {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        } catch (Exception e){
+            Toast.makeText(activityLoginScreen.this, "Authentication failed.",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
+
     private void updateUI(FirebaseUser account) {
         Intent intent = new Intent( this, activityMain.class);
         startActivity(intent);
         finish();
     }
+
+    public void Register(String email, String pass) {
+        mAuth.signInWithEmailAndPassword(email, pass)
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        @Override
+        public void onComplete(@NonNull Task<AuthResult> task) {
+            if (task.isSuccessful()) {
+                FirebaseUser user = mAuth.getCurrentUser();
+                updateUI(user);
+            } else {
+                Toast.makeText(activityLoginScreen.this, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    });
+    }
+
 
 }

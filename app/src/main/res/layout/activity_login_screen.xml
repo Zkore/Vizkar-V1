@@ -64,28 +64,7 @@ tools:context="com.iteso.vizkar_v1.activityLoginScreen">
         android:textColor="@color/mainWhite"
         android:textColorHint="@color/mainLightGray" />
 
-    <android.support.v7.widget.AppCompatCheckBox
-        android:id="@+id/chkRecuerdame"
-        android:layout_width="244dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom ="15dp"
-        android:text="@string/rememberMe"
-        android:textAlignment="center"
-        android:textColor="@color/mainWhite"
-        android:textSize="7.5pt" />
 
-    <TextView
-        android:id="@+id/recoverPassword"
-        android:layout_width="244dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/chkRecuerdame"
-        android:layout_centerHorizontal="true"
-        android:text="@string/recoverPass"
-        android:textAlignment="center"
-        android:textColor="@color/mainWhite"
-        android:textSize="7.5pt" />
 <Button
     android:id="@+id/login"
     android:layout_width="250dp"
